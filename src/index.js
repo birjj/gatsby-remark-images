@@ -268,12 +268,16 @@ module.exports = (
     `.trim()
     }
 
+    let shouldMaxWidth = !imageCaption && wrapperStyle.indexOf("max-width:") === -1;
+
     rawHTML = `
     <span
       class="${imageWrapperClass}"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; ${
         imageCaption ? `` : wrapperStyle
-      } max-width: ${presentationWidth}px;"
+      } ${
+        shouldMaxWidth ? `max-width: ${presentationWidth}px;` : ``
+      }"
     >
       ${rawHTML}
     </span>
